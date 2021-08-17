@@ -1,0 +1,61 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* SETTING COLORS FOR NORMAL, RIGHT, AND WRONG  */
+:root {
+    --baseColor: aqua; 
+    --wrongColor: red; 
+    --correctColor: green;
+}
+
+body{
+    --color: var(--baseColor);
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 100vh; */
+    height: 100vh;
+    background-color: aqua;
+}
+
+.main-container {
+    width: 800px;
+    max-width: 80%;
+    background-color: white;
+    padding: 20px;
+    border: cadetblue;
+}
+ /* ANSWER STYLING */
+
+/* using this to show the answers stacked on top of eachother */
+.button-grid {
+    display: grid;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+/* BUTTON STYLING 10:03*/
+.btn {
+    --color: (var(--baseColor))
+    padding: 10px; 
+}
+
+.btn:hover {
+    border-color: black;
+}
+
+/* FOOTER STYLING */
+footer {
+    padding: 30px;
+    clear: both;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+footer h3 {
+    font-size: 12px;
+}
