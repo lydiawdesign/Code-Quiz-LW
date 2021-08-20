@@ -1,6 +1,7 @@
-* {
+/* * {
   font-family: Arial, Helvetica, sans-serif;
-}
+  font-size: 14px;
+} */
 
 /* SETTING COLORS FOR NORMAL, RIGHT, AND WRONG  */
 :root {
@@ -19,6 +20,8 @@ body{
     /* width: 100vh; */
     height: 100vh;
     background-color: aqua;
+    font-family: 14px;
+    font-family: Arial, Helvetica, sans-serif ;
 }
 
 .main-container {
@@ -38,13 +41,42 @@ body{
 }
 
 /* BUTTON STYLING 10:03*/
-.btn {
+.button-styling{
     --color: (var(--baseColor))
     padding: 10px; 
 }
 
-.btn:hover {
-    border-color: black;
+.button-styling:hover {
+    border-color: blue;
+}
+
+/* setting up temporary button styling for when it is correct or wrong
+*/
+
+.button-styling.correct {
+    background-color: var(--correctColor);
+    color: white;
+}
+
+.button-styling.wrong {
+    background-color: var(--wrongColor);
+    color: white;
+}
+
+.nextSteps {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+.start-button-class, .next-button-class {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: bold;
+}
+
+.hide {
+    display: none;
 }
 
 /* FOOTER STYLING */
