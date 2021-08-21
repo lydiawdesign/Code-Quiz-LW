@@ -5,33 +5,58 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Quiz</title>
-
     <link rel="reset" href="./Assets/reset.css" />
     <link rel="stylesheet" href="./Assets/style.css" />
-    <script> scr="script.js"</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    
 </head>
 <body>
-    <div class="main-container">
-        <div id="question-container" class="hide">
-            <div id="question">Question Place Holder</div>
-            <div id="answer-buttons" class= "button-grid">
-                <button class="button-styling">Answer 1 Place Holder</button>
-                <button class="button-styling">Answer 2 Place Holder</button>
-                <button class="button-styling">Answer 3 Place Holder</button>
-                <button class="button-styling">Answer 4 Place Holder</button>
+    <div id="page-container">
+
+        <h2>How smart are you?</h2>
+
+        <div class="main-container">
+
+            <div id="question-container" class="hide">
+                <h1 id="question">Question Place Holder</h1>
+                <div id="answerButtons" class= "button-grid">
+                    <button class="button-styling" id= "answerOne">Answer 1 Place Holder</button>
+                    <button class="button-styling" id= "answerTwo">Answer 2 Place Holder</button>
+                    <button class="button-styling" id= "answerThree">Answer 3 Place Holder</button>
+                    <button class="button-styling" id= "answerFour">Answer 4 Place Holder</button>
+                </div>
+            </div>
+
+            <div class="nextSteps">
+                <button id="startEl" class="start-button-class">Start</button>
+                <button id="nextEl" class="next-button-class hide">Next</button>
             </div>
         </div>
 
-        <div class="nextSteps">
-            <button id="startButton" class="start-button-class">Start</button>
-            <button id="nextButton" class="next-button-class">Next</button>
-        </div>
+        <div class="timer">Time:  <span id="time">0</span></div>
     </div>
-    
+
+    <!-- end of game screen -->
+    <div id="gameOver" class="hide">
+        <h2>Congrats! You finished the Quiz.</h2>
+        <p>let's see how you did... your final score is  <span id="finalScore"></span>.</p>
+        <p>
+          Enter initials: <input type="text" id="initials" max="3" />
+          <button id="submit">Submit</button>
+        </p>
+      </div>
     
   <footer>
-    <h3>Lydia Williamson 2021</h3>
+    <h3>Made by Lydia Williamson 2021</h3>
   </footer>
+  <script src="Assets/questions.js"></script>
+  <script src="Assets/script.js"></script>
 
 </body>
+
 </html>
