@@ -21,16 +21,19 @@ THEN a timer starts and I am presented with a question
 WHEN I answer a question
 THEN I am presented with another question
 
--added 3 question choices in a variable then created a function that 
+-added 4 question choices in a variable then created a set of functions to show the next question along with their answers
 
 
 WHEN I answer a question incorrectly
 THEN time is subtracted from the clock
 
+- included in my else statement when checking whether or not the answers are correct, if the answer is wrong then the secondsleft is reduced.
+
 
 WHEN all questions are answered or the timer reaches 0
 THEN the game is over
 
+- set an alert for when the timer is over to say that the game is over. 
 
 WHEN the game is over
 THEN I can save my initials and my score

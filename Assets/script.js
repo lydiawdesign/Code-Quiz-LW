@@ -46,7 +46,7 @@ startButton.addEventListener("click", setTime);
 
 // give the rules to the game and hide the start button
 function startGame () {
-    window.alert("Take this quiz and let's find out. You will have 30 seconds to answer 4 questions. You will see your score at the end of the game. Save your highscore and see who ends up on the top... but I'm not sure I will have enough time to figure that out");
+    window.alert("Take this quiz and let's find out. You will have 30 seconds to answer 4 questions. You will see your score at the end of the game out of 4 possible points. Save and inital your score at the end. Don't forget that if you get an answer wrong then your time will be reduced as a penalty.");
 
     startButton.classList.add('hide');
     questionContainerEl.classList.remove('hide');
@@ -57,7 +57,7 @@ function startGame () {
 // will bring you to the next question
 function nextQuestion () {
     if (i === questions.length) {
-        questionEnder();
+        gameEnder();
     }
     else {
         questionEl.textContent = questions[i]["title"];
@@ -75,7 +75,8 @@ answerOne.addEventListener("click", function () {
         correctAnswers++;
     }
     else {
-        window.alert("Wrong!");
+        window.alert("Wrong and you are penalized in time");
+        secondsLeft--;
     }
     i++;
     nextQuestion();
@@ -87,7 +88,8 @@ answerTwo.addEventListener("click", function () {
         correctAnswers++;
     }
     else {
-        window.alert("Wrong!");
+        window.alert("Wrong and you are penalized in time!");
+        secondsLeft--;
     }
     i++;
     nextQuestion();
@@ -99,7 +101,8 @@ answerThree.addEventListener("click", function () {
         correctAnswers++;
     }
     else {
-        window.alert("Wrong!");
+        window.alert("Wrong and you are penalized in time!");
+        secondsLeft--;
     }
     i++;
     nextQuestion();
@@ -111,13 +114,14 @@ answerFour.addEventListener("click", function () {
         correctAnswers++;
     }
     else {
-        window.alert("Wrong!");
+        window.alert("Wrong and you are penalized in time!");
+        secondsLeft--;
     }
     i++;
     nextQuestion();
 })
 
-function questionEnder() {
+function gameEnder() {
     // hide the remaining answers when showing the score
     answerOne.remove();
     answerTwo.remove();
@@ -144,14 +148,31 @@ function setTime() {
 
         if (secondsLeft === 0) {
             clearInterval(timerInterval);
-            alert("Out of Time");
-            questionEnder();
+            alert("Out of Time, Try again by refreshing the page!");
+            gameEnder();
         }
 
         else if (i === questions.length) {
             clearInterval(timerInterval);
         }
     }, 1000)
-    // return (score)
 }
+
+// // saving score to local storage in a list (hopefully)
+// function saveScore(score, highScores) {
+//     const name = prompt('Please enter your initals');
+//     const newScore = { score, name };
+    
+//     // 1. Add to list
+//     highScores.push(newScore);
+  
+//     // 2. Sort the list
+//     highScores.sort((a, b) => b.score - a.score);
+    
+//     // 3. Select new list
+//     highScores.splice(NO_OF_HIGH_SCORES);
+    
+//     // 4. Save to local storage
+//     localStorage.setItem(HIGH_SCORES, JSON.stringify(highScores));
+//   };
 
