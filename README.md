@@ -15,9 +15,13 @@ GIVEN I am taking a code quiz
 WHEN I click the start button
 THEN a timer starts and I am presented with a question
 
+- added an eventlistener and timer interval of 60 seconds to begin counting down when start is selected
+
 
 WHEN I answer a question
 THEN I am presented with another question
+
+-added 3 question choices in a variable then created a function that 
 
 
 WHEN I answer a question incorrectly

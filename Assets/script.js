@@ -1,5 +1,5 @@
+// global variables listed
 var startButton = document.getElementById('startEl');
-var nextButton = document.getElementById('nextEl');
 var questionContainerEl = document.getElementById('question-container');
 var questionEl = document.getElementById('question');
 var answerEl = document.getElementById('answerChoice');
@@ -9,179 +9,12 @@ var answerTwo = document.getElementById("answerTwo");
 var answerThree = document.getElementById("answerThree");
 var answerFour = document.getElementById("answerFour");
 
-let shuffleQuestions, currentQuestionIndex
+var correctAnswers = 0;
 
-// start the game
-startButton.addEventListener('click', startGame);
-startButton.addEventListener("click", setTime);
-nextButton.addEventListener('click', () => {
-    currentQuestionIndex++ ;
-    nextQuestion ();
-});
+var timer = document.getElementById('timer');
 
-
-function startGame () {
-    window.alert("Take this quiz and let's find out. You will have 30 seconds to answer 5 questions. Save your highscore and see who ends up on the top!");
-    // hiding the start button and showing the question box
-
-    answerOne.hidden = false;
-    answerTwo.hidden = false;
-    answerThree.hidden = false;
-    answerFour.hidden = false;
-
-    startButton.classList.add('hide');
-    questionContainerEl.classList.remove('hide');
-    if (i === questions.length) {
-        questionEnder();
-    }
-    else {
-        questionEl.textContent = questions[i]["title"];
-        answerOne.textContent = questions[i]["choices"][0];
-        answerTwo.textContent = questions[i]["choices"][1];
-        answerThree.textContent = questions[i]["choices"][2];
-        answerFour.textContent = questions[i]["choices"][3];
-    }
-
-    nextQuestion ();
-}
-
-// clicking the next button to get the next question
-
-function nextQuestion () {
-    answerOne.hidden = false;
-    answerTwo.hidden = false;
-    answerThree.hidden = false;
-    answerFour.hidden = false;
-
-    startButton.hidden = true;
-    if (i === questions.length) {
-        questionEnder();
-    }
-    else {
-        questionEl.textContent = questions[i]["title"];
-        answerOne.textContent = questions[i]["choices"][0];
-        answerTwo.textContent = questions[i]["choices"][1];
-        answerThree.textContent = questions[i]["choices"][2];
-        answerFour.textContent = questions[i]["choices"][3];
-    }
-    
-}
-
-function showQuestion (question) {
-    // gets and shows the question in the html
-    questionEl.innerText = question.question ;
-    questions.answer.forEach(answer => {
-        var button = document.createElement('button');
-        button.innerText = answer.text;
-        button.classList.add('button-styling');
-        if (answer.correct) {
-          button.dataset.correct = answer.correct
-        }   
-        button.addEventListener('click', selectAnswer);
-        answerButtons.appendChild(button);
-    });
-}
-
-// function resetState () {
-//     nextButton.classList.add('hide');
-//     while (answerEl.firstChild) {
-//         answerEl.removeChild
-//         (answerEl.firstChild)
-//     }
-// }
-
-
-// setting up the answering to decide whether the question was answered correctly or incorrectly
-answerOne.addEventListener("click", function () {
-    if (questions[i]["choices"][0] === questions[i]["answer"]) {
-        window.alert("Correct!");
-        score++;
-    }
-    else {
-        window.alert("Wrong!");
-    }
-    i++;
-    nextQuestion();
-})
-
-answerTwo.addEventListener("click", function () {
-    if (questions[i]["choices"][0] === questions[i]["answer"]) {
-        window.alert("Correct!");
-        score++;
-    }
-    else {
-        window.alert("Wrong!");
-    }
-    i++;
-    nextQuestion();
-})
-
-answerThree.addEventListener("click", function () {
-    if (questions[i]["choices"][0] === questions[i]["answer"]) {
-        window.alert("Correct!");
-        score++;
-    }
-    else {
-        window.alert("Wrong!");
-    }
-    i++;
-    nextQuestion();
-})
-
-answerFour.addEventListener("click", function () {
-    if (questions[i]["choices"][0] === questions[i]["answer"]) {
-        window.alert("Correct!");
-        score++;
-    }
-    else {
-        window.alert("Wrong!");
-    }
-    i++;
-    nextQuestion();
-})
-
-function setStatusClass () {
-    clearStatusClass(element)
-    if (correct) {
-        element.classList.add('correct')
-    } else {
-        element.classList.add('wrong')
-    }
-}
-
-function clearStatusClass (element) {
-    element.classList.remove('correct')
-    element.classList.remove('wrong')
-}
-
-function questionEnder() {
-
-    var scoreTag = document.createElement("h1");
-    var inputTag = document.createElement("input");
-    var submitButton = document.createElement("button");
-    score += secondsLeft * .1;
-    score = score.toFixed(2);
-    document.getElementById("question").textContent = "All Done!";
-    answerOne.remove();
-    answerTwo.remove();
-    answerThree.remove();
-    answerFour.remove();
-    document.body.children[1].appendChild(scoreTag);
-    document.getElementsByTagName("h1")[0].setAttribute("id", "score");
-    document.getElementById("score").textContent = "Your Score: " + score;
-    document.body.children[1].appendChild(inputTag);
-    document.getElementsByTagName("input")[0].setAttribute("id", "input-field");
-    submitButton.textContent = "Submit";
-    document.body.children[1].appendChild(submitButton);
-    submitButton.addEventListener("click", function (event) {
-        event.preventDefault();
-        var highScoreText = new Object();
-        highScoreText.name = inputTag.value.trim();
-        highScoreText.newScore = score;
-        storeScores(highScoreText);
-        window.location.href = "highScores.html";
-    });
-}
+var i = 0;
+var secondsLeft = 30;
 
 var questions= [
     {
@@ -192,24 +25,118 @@ var questions= [
     {
        title: "this is another question?",
        choices: ['an answer', 'yup', 'I am running out of time', 'nope'],
-       answer: 'nope'
+       answer: 'yup'
     },
-      
-    
+    {
+        title: "I don't feel like writing another question so click the third option?",
+        choices: ['do not dare', 'noooo', 'pick me', 'nope'],
+        answer: 'pick me'
+     },
+     {
+        title: "Who created this quiz",
+        choices: ['Jacob', 'a ghost', 'a cat', 'Lydia'],
+        answer: 'Lydia'
+     },
 ]
 
-// // selecting one of the four answer choices
-// function selectAnswer () {
+// start the game
+startButton.addEventListener('click', startGame);
+startButton.addEventListener("click", setTime);
+
+
+// give the rules to the game and hide the start button
+function startGame () {
+    window.alert("Take this quiz and let's find out. You will have 30 seconds to answer 4 questions. You will see your score at the end of the game. Save your highscore and see who ends up on the top... but I'm not sure I will have enough time to figure that out");
+
+    startButton.classList.add('hide');
+    questionContainerEl.classList.remove('hide');
+
+    nextQuestion ();
+}
+
+// will bring you to the next question
+function nextQuestion () {
+    if (i === questions.length) {
+        questionEnder();
+    }
+    else {
+        questionEl.textContent = questions[i]["title"];
+        answerOne.textContent = questions[i]["choices"][0];
+        answerTwo.textContent = questions[i]["choices"][1];
+        answerThree.textContent = questions[i]["choices"][2];
+        answerFour.textContent = questions[i]["choices"][3];
+    }
+}
+
+// setting up the answering to decide whether the question was answered correctly or incorrectly
+answerOne.addEventListener("click", function () {
+    if (questions[i]["choices"][0] === questions[i]["answer"]) {
+        window.alert("Correct!");
+        correctAnswers++;
+    }
+    else {
+        window.alert("Wrong!");
+    }
+    i++;
+    nextQuestion();
+})
+
+answerTwo.addEventListener("click", function () {
+    if (questions[i]["choices"][1] === questions[i]["answer"]) {
+        window.alert("Correct!");
+        correctAnswers++;
+    }
+    else {
+        window.alert("Wrong!");
+    }
+    i++;
+    nextQuestion();
+})
+
+answerThree.addEventListener("click", function () {
+    if (questions[i]["choices"][2] === questions[i]["answer"]) {
+        window.alert("Correct!");
+        correctAnswers++;
+    }
+    else {
+        window.alert("Wrong!");
+    }
+    i++;
+    nextQuestion();
+})
+
+answerFour.addEventListener("click", function () {
+    if (questions[i]["choices"][3] === questions[i]["answer"]) {
+        window.alert("Correct!");
+        correctAnswers++;
+    }
+    else {
+        window.alert("Wrong!");
+    }
+    i++;
+    nextQuestion();
+})
+
+function questionEnder() {
+    // hide the remaining answers when showing the score
+    answerOne.remove();
+    answerTwo.remove();
+    answerThree.remove();
+    answerFour.remove();
+
+    // defining the local variables
+    var scoreTag = document.createElement("h1");
+    var createTag = document.createElement("input");
+    var createButton = document.createElement("button");
+
+    document.body.children[1].appendChild(scoreTag);
+    document.getElementsByTagName("h1")[0].setAttribute("id", "score");
+    document.getElementById("score").textContent = "Your Score: " + correctAnswers + "/4";
+   
+}
+
 
 // Setting up the timer using timer interval for 60 seconds to answer the 5 questions
-var timer = document.getElementById('timer');
-
-var i = 0;
-var score = 0;
-var secondsLeft = 60;
-var storedScores;
-var scoreList = [];
-
 function setTime() {
     var timerInterval = setInterval(function () {
         secondsLeft--;
