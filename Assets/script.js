@@ -158,21 +158,6 @@ function setTime() {
     }, 1000)
 }
 
-// // saving score to local storage in a list (hopefully)
-// function saveScore(score, highScores) {
-//     const name = prompt('Please enter your initals');
-//     const newScore = { score, name };
-    
-//     // 1. Add to list
-//     highScores.push(newScore);
-  
-//     // 2. Sort the list
-//     highScores.sort((a, b) => b.score - a.score);
-    
-//     // 3. Select new list
-//     highScores.splice(NO_OF_HIGH_SCORES);
-    
-//     // 4. Save to local storage
-//     localStorage.setItem(HIGH_SCORES, JSON.stringify(highScores));
-//   };
+// saving score to local storage in a list (hopefully) ideally I'd want a pop up that asks the user to input their initals with their score already populated and then that would save in a list that shows after each game is completed. I ran out of time to do this. 
+
 

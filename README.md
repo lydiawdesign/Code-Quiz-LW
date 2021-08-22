@@ -37,3 +37,5 @@ THEN the game is over
 
 WHEN the game is over
 THEN I can save my initials and my score
+
+-ideally I'd want a pop up that asks the user to input their initals with their score already populated and then that would save in a list that shows after each game is completed. I ran out of time to do this. 
